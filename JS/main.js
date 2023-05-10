@@ -18,26 +18,45 @@ for (let turno = 1; turno <= numeroClientes; turno++)  {
     console.log ("Al cliente " + nombre + " le corresponde el turno número" + turno);
 };
 
-//Definición de características objeto//
-let Nombre
-let apellido
-let edad
-let cuil 
+let prestamos = [
+    {
+        nombre: 'nombre1',
+        monto: 1000,
+        cuotas: 9,
+        pagoDeCuotas: 6,
+    
+    },
+    {
+        nombre: 'nombre2',
+        monto: 5000,
+        cuotas: 3,
+        pagoDeCuotas: 1,
+    
+    },
+    {
+        nombre: 'nombre3',
+        monto: 7500,
+        cuotas: 7,
+        pagoDeCuotas: 3,
+    }
+]
 
-//creacion de molde//
-let unCliente  =	{
- Nombre: "Griselda",
- apellido: "Gonzalez",
- edad:  "18",
- cuil:"27384119471", 
-};
+let consultasDePrestamos = {
+    verPrestamos: (nombre) => {
+        let buscarPrestamoPorNombre = prestamos.find(prestamo => prestamo.nombre === nombre);
+        if(buscarPrestamoPorNombre === undefined){
+            return null
+        } else {
+            return buscarPrestamoPorNombre
+        }
+    },
 
-console.log ("el objeto se compone de estos datos", unCliente);
-alert ("el objeto se compone de estos datos" + unCliente);
+    eliminarPrestamo: (nombre) => {
+        let eliminarPorNombre = prestamos.filter(prestamo => prestamo.nombre !== nombre);
+        return eliminarPorNombre
+    }
 
-console.log ("El cliente" + unCliente.nombre + "será calificado para sacar un préstamo");
-alert ("El cliente"+ unCliente + "se llama" ["nombre"]);
+}
 
-//Declaración de Arrays
-const ARRAY_DE_NUMEROS = [10,20,30,40,50]
-console.log ("Qué hay dentro del array en la posición 25?", ARRAY_DE_NUMEROS [25]);
+//console.log(consultasDePrestamos.verPrestamos('jorge'))
+console.log(consultasDePrestamos.eliminarPrestamo('nombre1'))
